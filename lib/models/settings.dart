@@ -44,7 +44,7 @@ class ThemeModeSetting implements SettingsProtocol {
   int get numberOfChoices => 3;
 
   @override
-  Icon get icon => const Icon(Icons.invert_colors_on);
+  Icon get icon => const Icon(Icons.invert_colors_on_rounded);
 }
 
 /// The Setting to control the Language in
