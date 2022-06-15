@@ -1,7 +1,7 @@
 library screens;
 
 import 'package:flutter/material.dart';
-import 'package:string_translate/string_translate.dart';
+import 'package:string_translate/string_translate.dart' show Translate;
 
 /// Screen shown when the App
 /// didn't find a specific Screen
@@ -15,6 +15,8 @@ class UnknownScreen extends StatelessWidget {
       body: _body,
       extendBody: true,
       extendBodyBehindAppBar: true,
+      endDrawerEnableOpenDragGesture: false,
+      drawerEnableOpenDragGesture: false,
     );
   }
 
@@ -35,8 +37,13 @@ class UnknownScreen extends StatelessWidget {
       textDirection: TextDirection.ltr,
       verticalDirection: VerticalDirection.down,
       children: <Widget>[
+        // Question Mark Icon
         const Icon(Icons.question_mark_rounded),
-        const SizedBox(),
+
+        // Spacer
+        const SizedBox(height: 20),
+
+        // Text
         Text('We didn\'t find the Screen you where looking for.'.tr())
       ],
     );

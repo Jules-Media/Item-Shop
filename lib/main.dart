@@ -2,9 +2,12 @@ library main;
 
 import 'package:flutter/material.dart';
 import 'package:item_shop/screens/homescreen.dart';
+import 'package:item_shop/screens/settings_screen.dart';
 import 'package:item_shop/screens/unknown_screen.dart';
-import 'package:modern_themes/modern_themes.dart';
-import 'package:string_translate/string_translate.dart';
+import 'package:item_shop/values/translations.dart';
+import 'package:modern_themes/modern_themes.dart' show Themes;
+import 'package:string_translate/string_translate.dart'
+    show Translation, TranslationDelegates, TranslationLocales;
 
 void main() {
   runApp(const ItemShop());
@@ -20,14 +23,14 @@ class ItemShop extends StatelessWidget {
     /// The Title for this App.
     const title = 'Item Shop';
 
+    // Init the Translations Package
     Translation.init(
       defaultLocale: TranslationLocales.english,
       supportedLocales: {
         TranslationLocales.english,
         TranslationLocales.german,
       },
-      // TODO: implement Translations
-      translations: {},
+      translations: TranslatedStrings.translations,
     );
 
     return MaterialApp(
@@ -55,6 +58,10 @@ class ItemShop extends StatelessWidget {
       highContrastTheme: Themes.highContrastLightTheme,
       highContrastDarkTheme: Themes.highContrastDarkTheme,
 
+      // Locales
+      localizationsDelegates: TranslationDelegates.localizationDelegates,
+      supportedLocales: Translation.supportedLocales,
+
       // Routes
       initialRoute: Homescreen.routeName,
       routes: _routes,
@@ -66,6 +73,7 @@ class ItemShop extends StatelessWidget {
   Map<String, Widget Function(BuildContext)> get _routes {
     return {
       Homescreen.routeName: (context) => const Homescreen(),
+      SettingsScreen.routeName: (context) => const SettingsScreen(),
     };
   }
 
