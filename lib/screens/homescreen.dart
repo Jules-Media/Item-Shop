@@ -1,6 +1,7 @@
 library screens;
 
 import 'package:bloc_implementation/bloc_implementation.dart' show BlocParent;
+import 'package:flutter/gestures.dart' show DragStartBehavior;
 import 'package:flutter/material.dart';
 import 'package:item_shop/blocs/homescreen_bloc.dart';
 import 'package:string_translate/string_translate.dart' show Translate;
@@ -51,6 +52,10 @@ class _HomescreenState extends State<Homescreen> {
       title: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
+        textBaseline: TextBaseline.alphabetic,
+        textDirection: TextDirection.ltr,
+        mainAxisSize: MainAxisSize.min,
+        verticalDirection: VerticalDirection.down,
         children: [
           const Icon(Icons.storefront),
           Text('Store'.tr()),
@@ -62,6 +67,14 @@ class _HomescreenState extends State<Homescreen> {
   /// Body of the Homescreen
   GridView get _body {
     return GridView.builder(
+      addAutomaticKeepAlives: true,
+      addRepaintBoundaries: true,
+      addSemanticIndexes: true,
+      clipBehavior: Clip.antiAliasWithSaveLayer,
+      dragStartBehavior: DragStartBehavior.down,
+      keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+      physics: const BouncingScrollPhysics(),
+      scrollDirection: Axis.vertical,
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
       ),
