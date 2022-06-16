@@ -1,12 +1,13 @@
 library models;
 
-import 'package:flutter/material.dart' show Icon, Icons;
+import 'package:flutter/material.dart' show Icon, Icons, Locale, ThemeMode;
 import 'package:item_shop/models/settings_protocol.dart' hide allSettings;
+import 'package:string_translate/string_translate.dart' show TranslationLocales;
 
 /// The Setting with which you can set
 /// the main Color for this App.
 class ColorSetting implements SettingsProtocol {
-  // Const Constructor
+  // Constant Constructor
   const ColorSetting();
 
   @override
@@ -22,13 +23,16 @@ class ColorSetting implements SettingsProtocol {
   int get numberOfChoices => 2;
 
   @override
+  Set<bool> get choices => {true, false};
+
+  @override
   Icon get icon => const Icon(Icons.color_lens);
 }
 
 /// The Setting with which you can set
 /// the Theme Mode of this App.
 class ThemeModeSetting implements SettingsProtocol {
-  // Const Constructor
+  // Constand Constructor
   const ThemeModeSetting();
 
   @override
@@ -44,12 +48,20 @@ class ThemeModeSetting implements SettingsProtocol {
   int get numberOfChoices => 3;
 
   @override
+  Set<ThemeMode> get choices => {
+        ThemeMode.system,
+        ThemeMode.light,
+        ThemeMode.dark,
+      };
+
+  @override
   Icon get icon => const Icon(Icons.invert_colors_on_rounded);
 }
 
 /// The Setting to control the Language in
 /// which the text in this App is displayed.
 class LanguageSetting implements SettingsProtocol {
+  // Constant Constructor
   const LanguageSetting();
 
   @override
@@ -63,6 +75,12 @@ class LanguageSetting implements SettingsProtocol {
 
   @override
   int get numberOfChoices => 2;
+
+  @override
+  Set<Locale> get choices => {
+        TranslationLocales.english,
+        TranslationLocales.german,
+      };
 
   @override
   Icon get icon => const Icon(Icons.language);

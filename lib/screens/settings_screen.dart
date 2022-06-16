@@ -59,7 +59,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           isThreeLine: false,
           leading: setting.icon,
           title: Text(setting.name.tr()),
-          subtitle: Text(setting.description),
+          subtitle: Text(setting.description.tr()),
         );
       },
     );

@@ -37,6 +37,7 @@ abstract class SettingsProtocol {
     required this.description,
     required this.type,
     required this.numberOfChoices,
+    required this.choices,
     required this.icon,
   });
 
@@ -55,6 +56,12 @@ abstract class SettingsProtocol {
   /// you can choose between as a value
   /// of this Setting.
   final int numberOfChoices;
+
+  /// The Possible Choices for this
+  /// Setting.
+  /// Implemented as a Set, so that every
+  /// Option just can be in there once.
+  final Set<dynamic> choices;
 
   /// The Icon shown as leading
   /// at the List Tile on the

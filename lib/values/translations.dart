@@ -14,5 +14,6 @@ class TranslatedStrings {
       TranslationLocales.german:
           'Wir haben die Seite die du gesucht hast nicht gefunden.',
     },
+    // TODO: add Translations for Settings Names and Descriptions
   };
 }
